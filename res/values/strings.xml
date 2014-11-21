@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DASM</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="operacionesServicioWeb">Operaciones Servicio Web</string>
+    <string name="dni">DNI</string>
+    <string name="title_activity_operacion_servicio_web">OperacionServicioWebActivity</string>
+    <string name="introduzcaDni">introduzca el DNI</string>
+    <string name="title_activity_consulta_registros">ConsultaRegistros</string>
+    <string name="consultaDeRegistros">Consulta de Registros</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="direccion">Direccion</string>
+    <string name="telefono">Teléfono</string>
+    <string name="equipo">Equipo</string>
+    <string name="title_activity_insercion_registro">InsercionRegistro</string>
+    <string name="insercionDeRegistro">Inserción de Registro</string>
+    <string name="title_activity_modificacion_registro">ModificacionRegistro</string>
+    <string name="modificacionDeRegistro">Modificación de Registro</string>
+    <string name="title_activity_borrado_registro">BorradoRegistro</string>
+    <string name="borradoDeRegistro">Borrado de Registro</string>
+    <string name="progress_title">Conectando con la BD</string>
+    <string name="sin_respuesta">El servidor no responde</string>
+    <string name="sin_datos">La consulta no devuelve ningún registro</string>
+
+</resources>
