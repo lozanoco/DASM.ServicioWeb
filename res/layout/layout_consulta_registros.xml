@@ -140,24 +140,28 @@
             android:id="@+id/imagePrimero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="firstRegister"
             android:src="@android:drawable/ic_media_previous" />
 
         <ImageView
             android:id="@+id/imageAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="previousRegister"
             android:src="@android:drawable/ic_media_rew" />
 
         <ImageView
             android:id="@+id/imageSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="nextRegister"
             android:src="@android:drawable/ic_media_ff" />
 
         <ImageView
             android:id="@+id/imageUltimo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="lastRegister"
             android:src="@android:drawable/ic_media_next" />
 
     </LinearLayout>

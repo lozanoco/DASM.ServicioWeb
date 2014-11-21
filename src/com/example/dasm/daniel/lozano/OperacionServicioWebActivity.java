@@ -37,8 +37,7 @@ public class OperacionServicioWebActivity extends Activity {
 	@Override
 	public void onActivityResult(int actividad,int resultado,Intent datos){
 		if(actividad==this.actividad){
-			String respuesta=datos.getStringExtra("respuesta");
-			Toast.makeText(OperacionServicioWebActivity.this, "Vuelvo de la actividad 2, respuesta:"+respuesta, Toast.LENGTH_SHORT).show();
+			Toast.makeText(OperacionServicioWebActivity.this, "Fin de la consulta", Toast.LENGTH_SHORT).show();
 		}else{
 			Toast.makeText(OperacionServicioWebActivity.this, "Resultado erroneo", Toast.LENGTH_SHORT).show();
 		}
@@ -83,7 +82,7 @@ public class OperacionServicioWebActivity extends Activity {
         protected void onPostExecute(String respuesta) {
         	String mensaje = getString(R.string.sin_datos);
 
-        	pDialog.dismiss();
+        	
 			try {
 				JSONArray arrayJSON = new JSONArray(respuesta);
 				int numRegistros = arrayJSON.getJSONObject(0).getInt("NUMREG");
@@ -93,10 +92,10 @@ public class OperacionServicioWebActivity extends Activity {
 					startActivityForResult(i,actividad);
 					mensaje = respuesta;
 				}
-	        	Toast.makeText(getBaseContext(), mensaje, Toast.LENGTH_LONG).show();
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
+			pDialog.dismiss();
         }
 
     }
