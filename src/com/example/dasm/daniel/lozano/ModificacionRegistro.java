@@ -1,7 +1,6 @@
 package com.example.dasm.daniel.lozano;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
@@ -15,8 +14,6 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +26,6 @@ public class ModificacionRegistro extends Activity {
 		setContentView(R.layout.layout_modificacion_registro);
 		
 		Bundle extras = getIntent().getExtras();
-		String mensaje = "No se han encontrado registros";
 		if(extras != null) {
 			try {
 				JSONArray arrayJSON = new JSONArray(extras.getString("registros"));
@@ -114,7 +110,6 @@ public class ModificacionRegistro extends Activity {
 				Log.e(getString(R.string.app_name),e.toString());
 				onBackPressed();
 			}
-			//			pDialog.dismiss();
 			return respuesta;
 		}
 
@@ -122,7 +117,6 @@ public class ModificacionRegistro extends Activity {
 		@Override
 		protected void onPostExecute(String respuesta) {
 			Intent i=new Intent();
-
 			pDialog.dismiss();
 			try {
 				JSONArray arrayJSON = new JSONArray(respuesta);
@@ -138,12 +132,11 @@ public class ModificacionRegistro extends Activity {
 					setResult(RESULT_CANCELED,i);
 					break;
 				}
-
 				onBackPressed();
 			} catch (JSONException e) {
+				onBackPressed();
 				e.printStackTrace();
 			}
-
 		}
 
 	}

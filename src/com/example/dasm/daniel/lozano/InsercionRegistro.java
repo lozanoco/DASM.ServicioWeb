@@ -1,10 +1,7 @@
 package com.example.dasm.daniel.lozano;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import android.app.Activity;
@@ -24,22 +21,16 @@ public class InsercionRegistro extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_insercion_registro);
-		TextView textIdentificadorRegistro = (TextView)findViewById(R.id.textIdentificadorRegistro);
-		textIdentificadorRegistro.setText("Nuevo registro");
-		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null) {
-			try {
-				JSONArray arrayJSON = new JSONArray(extras.getString("registros"));
-				JSONObject registro = arrayJSON.getJSONObject(1);
-				TextView txtDni = (TextView)findViewById(R.id.editTextDni);
-				txtDni.setText(registro.getString("DNI"));
-				txtDni.setFocusable(false);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String regsitro = new String(extras.getString("registro"));						
+			TextView txtDni = (TextView)findViewById(R.id.editTextDni);
+			txtDni.setText(regsitro);
+			txtDni.setFocusable(false);
+		}else{
+			onBackPressed();
 		}
+
 	}
 	public void insertarRegistro(View v){
 		String json=""; 
@@ -53,14 +44,14 @@ public class InsercionRegistro extends Activity {
 			jsonObject.put("Telefono", ((EditText)findViewById(R.id.editTextTelefono)).getText().toString());
 			jsonObject.put("Equipo", ((EditText)findViewById(R.id.editTextEquipo)).getText().toString());
 			json = jsonObject.toString();
-			
+
 			new InsercionBD().execute(json);
-			
+
 			Intent i=new Intent();
 			i.putExtra("respuesta","Inserción realizada");
 			setResult(RESULT_OK,i);
 			super.onBackPressed();
-			
+
 		} catch (JSONException e) {
 			onBackPressed();
 			e.printStackTrace();
@@ -86,15 +77,13 @@ public class InsercionRegistro extends Activity {
 		@Override
 		protected Void doInBackground(String... params) {
 			String json = params[0];
-			String respuesta="";
 
 			try {
 				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
 				HttpPost httpPost = new HttpPost(URL);                
 				StringEntity se = new StringEntity(json);
 				httpPost.setEntity(se);        		
-				HttpResponse response = httpclient.execute(httpPost);
-				respuesta = EntityUtils.toString(response.getEntity());       
+				httpclient.execute(httpPost);       
 				httpclient.close();
 			} catch (Exception e)  {
 				Log.e(getString(R.string.app_name),e.toString());
@@ -104,7 +93,7 @@ public class InsercionRegistro extends Activity {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public void onBackPressed(){
 		Intent i=new Intent();

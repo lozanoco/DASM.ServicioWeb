@@ -5,7 +5,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -14,6 +13,8 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,6 +37,16 @@ public class OperacionServicioWebActivity extends Activity {
 		dni = (EditText)findViewById(R.id.editTextDni);
 	}
 
+	public void verPantallaPreferencias(MenuItem item){
+		startActivity(new Intent(this, OpcionesActivity.class));
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+
 	public void lanzarConsultaRegistros(View v){
 		operacion=ACT_CONSULTA;
 		new ConsultaBD().execute(dni.getText().toString());
@@ -45,12 +56,12 @@ public class OperacionServicioWebActivity extends Activity {
 		operacion=ACT_INSERCION;
 		new ConsultaBD().execute(dni.getText().toString());
 	}
-	
+
 	public void lanzarBorradoRegistro(View v){
 		operacion=ACT_BORRADO;
 		new ConsultaBD().execute(dni.getText().toString());
 	}
-	
+
 	public void lanzarActualizacionRegistro(View v){
 		operacion=ACT_MODIFICACION;
 		new ConsultaBD().execute(dni.getText().toString());
@@ -68,6 +79,7 @@ public class OperacionServicioWebActivity extends Activity {
 			break;	
 			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización realizada con exito", Toast.LENGTH_SHORT).show();
 			break;
+
 			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_SHORT).show();
 			}
 		}else if(resultado==RESULT_CANCELED){
@@ -85,6 +97,7 @@ public class OperacionServicioWebActivity extends Activity {
 		}
 		dni.setText("");
 	}
+	
 
 	private class ConsultaBD extends AsyncTask <String, Void, String> {
 
@@ -136,7 +149,7 @@ public class OperacionServicioWebActivity extends Activity {
 				case 0: 
 					if(operacion==ACT_INSERCION){
 						i = new Intent(OperacionServicioWebActivity.this,InsercionRegistro.class);
-						i.putExtra("registros", respuesta);
+						i.putExtra("registro", dni.getText().toString());
 						startActivityForResult(i,ACT_INSERCION);
 					}else{						
 						mensaje = "Registro no existente";
@@ -181,7 +194,6 @@ public class OperacionServicioWebActivity extends Activity {
 						Toast.makeText(OperacionServicioWebActivity.this, "Debe introducir un DNI", Toast.LENGTH_LONG).show();
 						break;
 					}
-
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -189,5 +201,5 @@ public class OperacionServicioWebActivity extends Activity {
 
 		}
 
-	}
+	}	
 }

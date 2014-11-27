@@ -18,6 +18,7 @@
     <string name="title_activity_insercion_registro">InsercionRegistro</string>
     <string name="insercionDeRegistro">Inserción de Registro</string>
     <string name="title_activity_modificacion_registro">ModificacionRegistro</string>
+    <string name="title_opciones_activity">Preferencias</string>
     <string name="modificacionDeRegistro">Modificación de Registro</string>
     <string name="title_activity_borrado_registro">BorradoRegistro</string>
     <string name="borradoDeRegistro">Borrado de Registro</string>
@@ -27,5 +28,6 @@
     <string name="update_progress_title">Actualizando la BD</string>
     <string name="sin_respuesta">El servidor no responde</string>
     <string name="sin_datos">La consulta no devuelve ningún registro</string>
+    <string name="title_activity_opciones">OpcionesActivity</string>
 
 </resources>
