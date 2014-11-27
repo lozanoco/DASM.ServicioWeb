@@ -22,6 +22,9 @@
     <string name="title_activity_borrado_registro">BorradoRegistro</string>
     <string name="borradoDeRegistro">Borrado de Registro</string>
     <string name="progress_title">Conectando con la BD</string>
+    <string name="insert_progress_title">Insertando en la BD</string>
+    <string name="delete_progress_title">Eliminando de la BD</string>
+    <string name="update_progress_title">Actualizando la BD</string>
     <string name="sin_respuesta">El servidor no responde</string>
     <string name="sin_datos">La consulta no devuelve ningún registro</string>
 

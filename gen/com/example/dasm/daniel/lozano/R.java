@@ -81,24 +81,27 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int borradoDeRegistro=0x7f050013;
         public static final int consultaDeRegistros=0x7f050008;
+        public static final int delete_progress_title=0x7f050016;
         public static final int direccion=0x7f05000b;
         public static final int dni=0x7f050004;
         public static final int equipo=0x7f05000d;
         public static final int hello_world=0x7f050001;
         public static final int insercionDeRegistro=0x7f05000f;
+        public static final int insert_progress_title=0x7f050015;
         public static final int introduzcaDni=0x7f050006;
         public static final int modificacionDeRegistro=0x7f050011;
         public static final int nombre=0x7f050009;
         public static final int operacionesServicioWeb=0x7f050003;
         public static final int progress_title=0x7f050014;
-        public static final int sin_datos=0x7f050016;
-        public static final int sin_respuesta=0x7f050015;
+        public static final int sin_datos=0x7f050019;
+        public static final int sin_respuesta=0x7f050018;
         public static final int telefono=0x7f05000c;
         public static final int title_activity_borrado_registro=0x7f050012;
         public static final int title_activity_consulta_registros=0x7f050007;
         public static final int title_activity_insercion_registro=0x7f05000e;
         public static final int title_activity_modificacion_registro=0x7f050010;
         public static final int title_activity_operacion_servicio_web=0x7f050005;
+        public static final int update_progress_title=0x7f050017;
     }
     public static final class style {
         /** 

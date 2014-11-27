@@ -61,18 +61,21 @@
             android:id="@+id/imageAnadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="lanzarInsercionRegistro"
             android:src="@android:drawable/ic_menu_add" />
 
         <ImageView
             android:id="@+id/imageEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="lanzarActualizacionRegistro"
             android:src="@android:drawable/ic_menu_edit" />
 
         <ImageView
             android:id="@+id/imageBorrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="lanzarBorradoRegistro"
             android:src="@android:drawable/ic_menu_delete" />
 
     </LinearLayout>

@@ -25,7 +25,6 @@ public class ConsultaRegistros extends Activity {
 		setContentView(R.layout.layout_consulta_registros);
 
 		Bundle extras = getIntent().getExtras();
-		String mensaje = "No se han encontrado registros";
 		if(extras != null) {
 			try {
 				registros = new JSONArray(extras.getString("registros"));
@@ -34,10 +33,9 @@ public class ConsultaRegistros extends Activity {
 				showJSONregister(contadorRegistros);				
 
 			} catch (JSONException e) {
-				Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
 				e.printStackTrace();
+				onBackPressed();
 			}
-
 		} 
 	}
 
@@ -68,7 +66,7 @@ public class ConsultaRegistros extends Activity {
 			txtEquipo.setText(registroMostrable.getString("Equipo"));
 			txtEquipo.setFocusable(false);				
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			onBackPressed();
 			e.printStackTrace();
 		}
 	}
@@ -94,7 +92,6 @@ public class ConsultaRegistros extends Activity {
 	@Override
 	public void onBackPressed(){
 		Intent i=new Intent();
-		i.putExtra("respuesta","Pulsado para Atras!");
 		setResult(RESULT_OK,i);
 		super.onBackPressed();
 	}
