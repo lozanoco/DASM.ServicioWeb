@@ -71,29 +71,29 @@ public class OperacionServicioWebActivity extends Activity {
 	public void onActivityResult(int actividad,int resultado,Intent datos){
 		if(resultado==RESULT_OK){
 			switch(actividad){
-			case ACT_CONSULTA: Toast.makeText(OperacionServicioWebActivity.this, "Consulta finalizada", Toast.LENGTH_SHORT).show();
+			case ACT_CONSULTA: Toast.makeText(OperacionServicioWebActivity.this, "Consulta finalizada", Toast.LENGTH_LONG).show();
 			break;
-			case ACT_INSERCION: Toast.makeText(OperacionServicioWebActivity.this, "Inserción realizada con exito", Toast.LENGTH_SHORT).show();
+			case ACT_INSERCION: Toast.makeText(OperacionServicioWebActivity.this, "Inserción realizada con exito", Toast.LENGTH_LONG).show();
 			break;
-			case  ACT_BORRADO: Toast.makeText(OperacionServicioWebActivity.this, "Borrado realizado con exito", Toast.LENGTH_SHORT).show();
+			case  ACT_BORRADO: Toast.makeText(OperacionServicioWebActivity.this, "Borrado realizado con exito", Toast.LENGTH_LONG).show();
 			break;	
-			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización realizada con exito", Toast.LENGTH_SHORT).show();
+			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización realizada con exito", Toast.LENGTH_LONG).show();
 			break;
 
-			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_SHORT).show();
+			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_LONG).show();
 			}
 		}else if(resultado==RESULT_CANCELED){
 			switch(actividad){
-			case ACT_INSERCION: Toast.makeText(OperacionServicioWebActivity.this, "Inserción cancelada", Toast.LENGTH_SHORT).show();
+			case ACT_INSERCION: Toast.makeText(OperacionServicioWebActivity.this, "Inserción cancelada", Toast.LENGTH_LONG).show();
 			break;
-			case  ACT_BORRADO: Toast.makeText(OperacionServicioWebActivity.this, "Borrado cancelado", Toast.LENGTH_SHORT).show();
+			case  ACT_BORRADO: Toast.makeText(OperacionServicioWebActivity.this, "Borrado cancelado", Toast.LENGTH_LONG).show();
 			break;	
-			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización cancelada", Toast.LENGTH_SHORT).show();
+			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización cancelada", Toast.LENGTH_LONG).show();
 			break;
-			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_SHORT).show();
+			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_LONG).show();
 			}
 		}else{
-			Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la operación con exito", Toast.LENGTH_SHORT).show();
+			Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la operación con exito", Toast.LENGTH_LONG).show();
 		}
 		dni.setText("");
 	}
