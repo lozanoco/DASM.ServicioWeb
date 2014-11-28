@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 public class ModificacionRegistro extends Activity {
 
+	private String url;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,6 +29,8 @@ public class ModificacionRegistro extends Activity {
 		Bundle extras = getIntent().getExtras();
 		if(extras != null) {
 			try {
+				url =  new String(extras.getString("url"));	
+				
 				JSONArray arrayJSON = new JSONArray(extras.getString("registros"));
 				JSONObject registroMostrable = arrayJSON.getJSONObject(1);
 							
@@ -81,7 +84,7 @@ public class ModificacionRegistro extends Activity {
 	private class ActualizacionBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw22/fichas";
+		private final String URL = url;
 
 
 		@Override

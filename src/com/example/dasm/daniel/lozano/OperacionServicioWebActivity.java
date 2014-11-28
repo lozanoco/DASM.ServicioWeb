@@ -23,10 +23,12 @@ public class OperacionServicioWebActivity extends Activity {
 
 	private EditText dni;
 	private int operacion;
+	private String url;
 	private final int ACT_CONSULTA=1;
 	private final int ACT_INSERCION=2;
 	private final int ACT_BORRADO=3;
 	private final int ACT_MODIFICACION=4;
+	private final int ACT_CONEXION=5;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,14 @@ public class OperacionServicioWebActivity extends Activity {
 	}
 
 	public void verPantallaPreferencias(MenuItem item){
-		startActivity(new Intent(this, OpcionesActivity.class));
+		startActivityForResult(new Intent(this, OpcionesActivity.class),ACT_CONEXION);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu, menu);
+		
+		
 		return true;
 	}
 
@@ -79,6 +83,13 @@ public class OperacionServicioWebActivity extends Activity {
 			break;	
 			case ACT_MODIFICACION: Toast.makeText(OperacionServicioWebActivity.this, "Actualización realizada con exito", Toast.LENGTH_LONG).show();
 			break;
+			case ACT_CONEXION: 
+				Toast.makeText(OperacionServicioWebActivity.this, "Conexión establecida", Toast.LENGTH_LONG).show();
+				url=datos.getStringExtra("url");
+//				Log.e("LA url",url);
+				Toast.makeText(OperacionServicioWebActivity.this, url, Toast.LENGTH_LONG).show();
+				
+			break;
 
 			default:Toast.makeText(OperacionServicioWebActivity.this, "No se ha completado la accion con exito", Toast.LENGTH_LONG).show();
 			}
@@ -102,7 +113,7 @@ public class OperacionServicioWebActivity extends Activity {
 	private class ConsultaBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw22/fichas";
+		private final String URL = url;
 
 		@Override
 		protected void onPreExecute() {
@@ -150,6 +161,7 @@ public class OperacionServicioWebActivity extends Activity {
 					if(operacion==ACT_INSERCION){
 						i = new Intent(OperacionServicioWebActivity.this,InsercionRegistro.class);
 						i.putExtra("registro", dni.getText().toString());
+						i.putExtra("url", url);
 						startActivityForResult(i,ACT_INSERCION);
 					}else{						
 						mensaje = "Registro no existente";
@@ -161,16 +173,19 @@ public class OperacionServicioWebActivity extends Activity {
 					case ACT_CONSULTA:
 						i = new Intent(OperacionServicioWebActivity.this,ConsultaRegistros.class);
 						i.putExtra("registros", respuesta);
+						i.putExtra("url", url);
 						startActivityForResult(i,ACT_CONSULTA);
 						break;
 					case ACT_BORRADO:
 						i = new Intent(OperacionServicioWebActivity.this,BorradoRegistro.class);
 						i.putExtra("registros", respuesta);
+						i.putExtra("url", url);
 						startActivityForResult(i,ACT_BORRADO);
 						break;
 					case ACT_MODIFICACION:
 						i = new Intent(OperacionServicioWebActivity.this,ModificacionRegistro.class);
 						i.putExtra("registros", respuesta);
+						i.putExtra("url", url);
 						startActivityForResult(i,ACT_MODIFICACION);
 						break;
 					case ACT_INSERCION:
@@ -188,6 +203,7 @@ public class OperacionServicioWebActivity extends Activity {
 					case ACT_CONSULTA:
 						i = new Intent(OperacionServicioWebActivity.this,ConsultaRegistros.class);
 						i.putExtra("registros", respuesta);
+						i.putExtra("url", url);
 						startActivityForResult(i,ACT_CONSULTA);
 						break;
 					default:

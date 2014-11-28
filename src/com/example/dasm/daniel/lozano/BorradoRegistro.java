@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class BorradoRegistro extends Activity {
+	
+	private String url;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class BorradoRegistro extends Activity {
 				txtEquipo.setText(registroMostrable.getString("Equipo"));
 				txtEquipo.setFocusable(false);
 				
+				url =  new String(extras.getString("url"));	
+				
 			} catch (JSONException e) {
 				onBackPressed();
 				e.printStackTrace();
@@ -72,7 +76,7 @@ public class BorradoRegistro extends Activity {
 	private class BorradoBD extends AsyncTask <String, Void, String> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw22/fichas";
+		private final String URL = url;
 
 
 		@Override

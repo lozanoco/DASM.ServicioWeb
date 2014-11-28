@@ -18,7 +18,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class OpcionesActivity extends PreferenceActivity {
+	
+	private String url_final;
 
+	private final int ACT_CONEXION=5;
+	
+	
 	private boolean CONEXION_ESTABLECIDA=false;
 	
 	@SuppressWarnings("deprecation")
@@ -32,19 +37,22 @@ public class OpcionesActivity extends PreferenceActivity {
 		SharedPreferences pref =
 				PreferenceManager.getDefaultSharedPreferences(this);
 		String url= pref.getString("menu_servidor","")+"/"+pref.getString("menu_usuario","")+"/connect/"+pref.getString("menu_clave", "");
+		url_final=pref.getString("menu_servidor","")+"/"+pref.getString("menu_usuario","")+"/fichas";
 		new ConexionBD().execute(url);
-		
-		Intent i=new Intent();
-		setResult(RESULT_OK,i);
-		super.onBackPressed();
-
+//		
 	}
 
+
 	@Override
-	public void onBackPressed(){
+	public void onBackPressed(){	
 		if(!CONEXION_ESTABLECIDA)consultarPreferencias();
 		else{
-			Toast.makeText(OpcionesActivity.this, "Conexión establecida", Toast.LENGTH_LONG).show();
+//			Toast.makeText(OpcionesActivity.this, "Conexión establecida", Toast.LENGTH_LONG).show();
+			Intent i=new Intent();
+			i.putExtra("url", url_final);
+//			Toast.makeText(OpcionesActivity.this, url_final, Toast.LENGTH_LONG).show();
+			setResult(RESULT_OK,i);
+			Log.d("URL DE CONEXION", "" + url_final);
 			super.onBackPressed();
 		}
 	}

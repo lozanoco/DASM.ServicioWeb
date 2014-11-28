@@ -28,7 +28,7 @@ public final class R {
         public static final int DNILayout=0x7f09001b;
         public static final int LinearLayout1=0x7f090019;
         public static final int LinearLayout2=0x7f090000;
-        public static final int MnuOpc1=0x7f090021;
+        public static final int MenuPreferencias=0x7f090021;
         public static final int action_settings=0x7f090022;
         public static final int botonesLayout=0x7f09001c;
         public static final int editTextApellidos=0x7f09000b;

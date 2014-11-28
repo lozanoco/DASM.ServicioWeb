@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class InsercionRegistro extends Activity {
+	
+	private String url;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,8 @@ public class InsercionRegistro extends Activity {
 		setContentView(R.layout.layout_insercion_registro);
 		Bundle extras = getIntent().getExtras();
 		if(extras != null) {
-			String regsitro = new String(extras.getString("registro"));						
+			String regsitro = new String(extras.getString("registro"));	
+			url =  new String(extras.getString("url"));	
 			TextView txtDni = (TextView)findViewById(R.id.editTextDni);
 			txtDni.setText(regsitro);
 			txtDni.setFocusable(false);
@@ -61,7 +64,7 @@ public class InsercionRegistro extends Activity {
 	private class InsercionBD extends AsyncTask <String, Void, Void> {
 
 		private ProgressDialog pDialog;
-		private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw22/fichas";
+		private final String URL = url;
 
 
 		@Override
