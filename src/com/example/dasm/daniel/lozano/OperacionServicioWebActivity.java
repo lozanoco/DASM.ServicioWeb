@@ -87,7 +87,7 @@ public class OperacionServicioWebActivity extends Activity {
 				Toast.makeText(OperacionServicioWebActivity.this, "Conexión establecida", Toast.LENGTH_LONG).show();
 				url=datos.getStringExtra("url");
 //				Log.e("LA url",url);
-				Toast.makeText(OperacionServicioWebActivity.this, url, Toast.LENGTH_LONG).show();
+//				Toast.makeText(OperacionServicioWebActivity.this, url, Toast.LENGTH_LONG).show();
 				
 			break;
 
